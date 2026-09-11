@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#183e30" />
+    <title>LabelLens · SIH26034</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <header class="site-header">
+        <button class="brand" data-view="home" aria-label="Go to LabelLens home">
+          <span class="brand-mark" aria-hidden="true">⌁</span>
+          <span>LabelLens</span>
+        </button>
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <button data-view="scan">Scan</button>
+          <button data-view="saved">Saved scans</button>
+          <button data-view="dashboard">Officer dashboard</button>
+        </nav>
+        <div class="header-actions">
+          <button class="icon-button" data-action="preferences" aria-label="Open preferences">◎</button>
+          <button class="outline-button compact" data-action="new-scan">New scan</button>
+        </div>
+      </header>
+
+      <main>
+        <section id="home-view" class="view active-view" aria-labelledby="home-title">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">PACKAGE SCANNER · EVIDENCE-LED ANALYSIS</p>
+              <h1 id="home-title">What do you want to know about this product?</h1>
+              <p class="hero-lede">Read the label clearly. Check required declarations. Understand ingredients and compare what fits your priorities.</p>
+              <div class="hero-actions">
+                <button class="primary-button" data-action="new-scan">Scan a product <span>↗</span></button>
+                <button class="text-button" data-action="demo-scan">View demo inspection <span>→</span></button>
+              </div>
+              <div class="discovery-row" aria-label="What LabelLens can check">
+                <button data-action="new-scan"><span>01</span>Check the label</button>
+                <button data-action="demo-scan"><span>02</span>Understand ingredients</button>
+                <button data-action="preferences"><span>03</span>Set your priorities</button>
+              </div>
+            </div>
+            <div class="hero-art" aria-label="Illustration of package evidence">
+              <div class="hero-image-card">
+                <div class="package-silhouette">
+                  <div class="package-top">NOURISH / 01</div>
+                  <div class="package-leaf">✦</div>
+                  <div class="package-name">Oat<br /><em>&amp; cocoa</em></div>
+                  <div class="package-meta">Breakfast bites · 250 g</div>
+                </div>
+                <div class="floating-evidence evidence-one"><small>NET QUANTITY</small><strong>250 g</strong><span>PASS · 96%</span></div>
+                <div class="floating-evidence evidence-two"><small>INGREDIENTS</small><strong>7 detected</strong><span>VIEW EXPLANATION</span></div>
+              </div>
+              <div class="hero-note">From visible label<br />to useful signal.</div>
+            </div>
+          </div>
+          <div class="home-strip">
+            <div><span class="strip-number">01</span><strong>Compliance</strong><span>Mandatory declarations and rule checks</span></div>
+            <div><span class="strip-number">02</span><strong>Transparency</strong><span>Ingredients and nutrition in plain language</span></div>
+            <div><span class="strip-number">03</span><strong>Relevance</strong><span>Personal alerts and comparable alternatives</span></div>
+          </div>
+        </section>
+
+        <section id="scan-view" class="view" aria-labelledby="scan-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">NEW INSPECTION</p><h2 id="scan-title">Capture the package information</h2></div>
+            <button class="text-button" data-view="home">← Back home</button>
+          </div>
+          <div class="scan-layout">
+            <div class="capture-panel">
+              <div class="capture-stage" id="capture-stage">
+                <div class="scan-frame" id="scan-frame">
+                  <span class="corner top-left"></span><span class="corner top-right"></span><span class="corner bottom-left"></span><span class="corner bottom-right"></span>
+                  <div id="capture-placeholder" class="capture-placeholder"><div class="camera-icon">⌁</div><strong>Drop package images here</strong><span>or use the file picker below</span></div>
+                  <img id="package-preview" alt="Uploaded package preview" hidden />
+                </div>
+              </div>
+              <div class="capture-actions">
+                <label class="outline-button file-button">Choose images<input id="image-input" type="file" accept="image/*" multiple hidden /></label>
+                <button class="soft-button" data-action="demo-scan">Use demo package</button>
+                <button id="analyze-button" class="primary-button" disabled>Analyse package <span>↗</span></button>
+              </div>
+              <p id="upload-status" class="helper-text">Capture the front and information panel for the strongest result.</p>
+            </div>
+            <aside class="capture-checklist">
+              <p class="eyebrow">CAPTURE CHECKLIST</p>
+              <div class="checklist-item"><span class="check-dot pending">01</span><div><strong>Front panel</strong><small>Product name and identity</small></div></div>
+              <div class="checklist-item"><span class="check-dot pending">02</span><div><strong>Information panel</strong><small>Quantity, MRP, dates and details</small></div></div>
+              <div class="checklist-item"><span class="check-dot pending">03</span><div><strong>Ingredients and nutrition</strong><small>Optional for food analysis</small></div></div>
+              <div class="capture-tip"><strong>Good evidence is clear evidence.</strong><span>Reduce glare, keep the label flat, and move closer if small text is hard to read.</span></div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="processing-view" class="view" aria-live="polite" aria-labelledby="processing-title">
+          <div class="processing-wrap">
+            <p class="eyebrow">ANALYSING PACKAGE</p>
+            <h2 id="processing-title">Reading the visible signals</h2>
+            <p class="processing-copy">The prototype keeps extraction, rules, and food insights separate so each result remains explainable.</p>
+            <div class="processing-list">
+              <div class="processing-step" data-step="0"><span>01</span><strong>Checking image quality</strong><em>Waiting</em></div>
+              <div class="processing-step" data-step="1"><span>02</span><strong>Finding label declarations</strong><em>Waiting</em></div>
+              <div class="processing-step" data-step="2"><span>03</span><strong>Applying deterministic rules</strong><em>Waiting</em></div>
+              <div class="processing-step" data-step="3"><span>04</span><strong>Preparing food insights</strong><em>Waiting</em></div>
+            </div>
+            <div class="processing-line"><span id="processing-progress"></span></div>
+          </div>
+        </section>
+
+        <section id="result-view" class="view" aria-labelledby="result-title">
+          <div class="result-topbar"><button class="text-button" data-view="scan">← New inspection</button><div class="result-meta">INSPECTION <strong id="inspection-id">LL-26034-001</strong></div><button class="outline-button compact" data-action="download-report">Download report</button></div>
+          <div class="result-hero">
+            <div><p class="eyebrow">PACKAGE RESULT · <span id="result-category">FOOD</span></p><h2 id="result-title">Needs review</h2><p id="result-summary">One required declaration needs officer confirmation. Food information was extracted for transparency analysis.</p></div>
+            <div class="result-stamp"><span id="result-status-icon">◌</span><small id="result-status-label">REVIEW</small></div>
+          </div>
+          <div class="result-tabs" role="tablist" aria-label="Inspection results">
+            <button class="tab active" data-tab="overview" role="tab">Overview</button>
+            <button class="tab" data-tab="compliance" role="tab">Label check</button>
+            <button class="tab" data-tab="ingredients" role="tab">Inside the package</button>
+            <button class="tab" data-tab="alternatives" role="tab">Closest matches</button>
+          </div>
+          <div id="result-content" class="result-content"></div>
+        </section>
+
+        <section id="saved-view" class="view" aria-labelledby="saved-title">
+          <div class="section-heading"><div><p class="eyebrow">LOCAL HISTORY</p><h2 id="saved-title">Saved scans</h2></div><button class="primary-button compact" data-action="new-scan">New scan <span>↗</span></button></div>
+          <div id="saved-list" class="saved-list"></div>
+        </section>
+
+        <section id="dashboard-view" class="view" aria-labelledby="dashboard-title">
+          <div class="section-heading"><div><p class="eyebrow">OFFICER WORKSPACE · RULE VERSION 2026.1</p><h2 id="dashboard-title">Findings dashboard</h2></div><button class="outline-button compact" data-action="new-scan">New inspection</button></div>
+          <div class="metric-grid"><div class="metric-card"><span>INSPECTIONS</span><strong>128</strong><small>+18 this month</small></div><div class="metric-card"><span>NEEDS REVIEW</span><strong>19</strong><small>14.8% of scans</small></div><div class="metric-card"><span>FIELD CONFIDENCE</span><strong>92%</strong><small>Across demo records</small></div><div class="metric-card"><span>AVG. REVIEW TIME</span><strong>04:12</strong><small>Target under 05:00</small></div></div>
+          <div class="dashboard-grid"><div class="dashboard-panel"><div class="panel-heading"><div><p class="eyebrow">MOST COMMON FINDINGS</p><h3>Where reviews begin</h3></div><span class="muted-label">Demo data</span></div><div class="bar-list"><div><span>Consumer-care details</span><b><i style="width:78%"></i></b><strong>42</strong></div><div><span>Date declaration</span><b><i style="width:58%"></i></b><strong>31</strong></div><div><span>Net quantity format</span><b><i style="width:43%"></i></b><strong>23</strong></div><div><span>MRP visibility</span><b><i style="width:30%"></i></b><strong>16</strong></div></div></div><div class="dashboard-panel category-panel"><p class="eyebrow">INSPECTION MIX</p><h3>Product categories</h3><div class="category-ring"><div><strong>128</strong><span>scans</span></div></div><div class="legend"><span><i class="dot food"></i>Food 64%</span><span><i class="dot personal"></i>Personal care 21%</span><span><i class="dot other"></i>Other 15%</span></div></div></div>
+        </section>
+      </main>
+
+      <div id="preferences-drawer" class="drawer" aria-hidden="true">
+        <div class="drawer-backdrop" data-action="close-preferences"></div>
+        <aside class="drawer-panel" aria-labelledby="preferences-title"><button class="close-button" data-action="close-preferences" aria-label="Close preferences">×</button><p class="eyebrow">PERSONAL CONTEXT</p><h2 id="preferences-title">What matters most to you?</h2><p class="drawer-copy">Choose optional preferences. LabelLens uses them to explain potential relevance, not to make a diagnosis.</p><div class="preference-group"><span>Ingredients to flag</span><div class="preference-options"><button data-preference="milk">Milk</button><button data-preference="peanut">Peanut</button><button data-preference="soy">Soy</button><button data-preference="gluten">Gluten</button></div></div><div class="preference-group"><span>Nutrition priorities</span><div class="preference-options"><button data-preference="sugar">Lower sugar</button><button data-preference="sodium">Lower sodium</button></div></div><button class="primary-button full" data-action="close-preferences">Save preferences</button></aside>
+      </div>
+      <div id="toast" class="toast" role="status"></div>
+    </div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
