@@ -29,6 +29,16 @@ Open [http://localhost:4173](http://localhost:4173).
 
 The app intentionally runs without external dependencies so the complete demo works offline. OCR and model extraction are represented by the demo processing pipeline; the production integration boundary is documented in `sih26034-tech-stack.md`.
 
+## Deploy to GitHub Pages
+
+The repository includes `.github/workflows/deploy-pages.yml`. One repository-admin setup step is required the first time:
+
+1. Open **Settings → Pages** in the GitHub repository.
+2. Set **Source** to **GitHub Actions**.
+3. Pushes to `main` will then deploy the `src` folder automatically.
+
+The expected site URL is `https://hector-112.github.io/260sih/`.
+
 ## Project structure
 
 ```text
